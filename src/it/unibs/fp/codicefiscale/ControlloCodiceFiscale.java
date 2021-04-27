@@ -1,10 +1,12 @@
 package it.unibs.fp.codicefiscale;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ControlloCodiceFiscale {
 
-	private ArrayList<String> nome=new ArrayList();
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -37,6 +39,8 @@ if(codice.length()!=16) return false;
 		
 		if(controlloGiorno(codice.substring(8,9),Integer.parseInt(codice.substring(9,11)))==false)return false;
 		
+		if(controlloComune(codice.substring(11,15))==false) return false;
+		
 		return true;
 	}
 	
@@ -68,10 +72,37 @@ if(codice.length()!=16) return false;
 		return true;
 	}
 
-	
+	//metodo che prende in input la porzione di codice fisclae mese e giorno
+	//selezione il massimo dei giorni in base al mese e controlla
+	//ritorna false se il giorno è maggiore del massimo giorno possibile
+	//ritorno true se è inferiore o uguale al massimo
 	public static boolean controlloGiorno(String mese,int giorno)
 	{
-		System.out.println("mese"+mese+"  giorno: "+giorno);
+		List<String> codMese=Arrays.asList("A","B","C","D","E","H","L","M","P","R","S","T");
+		int maxgiorni=0;
+		switch(mese) {
+		case "B":maxgiorni=28;break;
+		case "A","C","E","L","M","R","T":maxgiorni=31;break;
+		case "D","H","P","S":maxgiorni=30; break;
+		
+		}
+		
+		if(giorno>maxgiorni) return false;
+		
+		
 		return true;
 	}
+	
+	//metodo che passa al metodo della classe comune il codice comune
+	//ritorna true se il codice è stato trovato
+	//ritorna false se non è trovato il codice comune
+	public static boolean controlloComune(String codice) {
+		
+		//chiamare classe comuni dove passo il codice del comune e il codice provincia
+		
+		
+		return true;
+	}
+	
 }
+
