@@ -25,6 +25,7 @@ public class MainLettura {
 				System.out.println(n.getNodeName());
 				Element e=(Element)n;
 				System.out.println("nome:"+e.getElementsByTagName("nome").item(0).getTextContent());
+				
 			}
 		}
 
