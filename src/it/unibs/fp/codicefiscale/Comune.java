@@ -1,13 +1,5 @@
 package it.unibs.fp.codicefiscale;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-public class Comune {
-    String nome;
-    String cod;
-=======
->>>>>>> Christian
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -15,6 +7,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 
 public class Comune {
 	
@@ -98,9 +91,5 @@ public class Comune {
 		}
 		return codiceComune ;
 	}
-	
-<<<<<<< HEAD
-=======
->>>>>>> main
->>>>>>> Christian
+
 }

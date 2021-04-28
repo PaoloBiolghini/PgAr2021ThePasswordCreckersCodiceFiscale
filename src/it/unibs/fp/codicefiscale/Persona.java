@@ -4,18 +4,18 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
-<<<<<<< HEAD
+
 	private String codiceFiscale;
-	private String comune;
-	private String sesso;
+	private String comune1;
+	private String sesso1;
 	private Data compleanno;
 	
 	public Persona(String nome, String cognome, String comune, String sesso, String compleanno) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
-		this.comune = comune;
-		this.sesso = sesso;
+		this.comune1 = comune;
+		this.sesso1 = sesso;
 		this.compleanno = Data.estraiData(compleanno) ;
 	}
 	
@@ -29,35 +29,15 @@ public class Persona {
 		return codiceFiscale;
 	}
 	public String getComune() {
-		return comune;
+		return comune1;
 	}
 	public String getSesso() {
-		return sesso;
+		return sesso1;
 	}
 	public Data getCompleanno() {
 		return compleanno; 
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
-	public void setCodiceFiscale(String codiceFiscale) {
-		this.codiceFiscale = codiceFiscale;
-	}
-	public void setComune(String comune) {
-		this.comune = comune;
-	}
-	public void setSesso(String sesso) {
-		this.sesso = sesso;
-	}
-	public void setCompleanno(Data compleanno) {
-		this.compleanno = compleanno;
-	}
 	
-	
-=======
 	private String codicefiscale;
 
 	private char sesso;
@@ -175,5 +155,5 @@ return lett;
 		String vocali = "aeiouAEIOU";
 		return (vocali.indexOf(check) == -1) ? true : false;
 	}
->>>>>>> Christian
+
 }

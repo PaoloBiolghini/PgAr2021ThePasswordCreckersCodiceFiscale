@@ -1,14 +1,8 @@
 package it.unibs.fp.codicefiscale;
 
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 import javax.swing.*;
-=======
 
->>>>>>> main
->>>>>>> Christian
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.stream.XMLInputFactory;
@@ -26,7 +20,6 @@ import java.io.FileReader;
 
 public class MainLettura {
 
-<<<<<<< HEAD
 	public static void main(String[] args) throws XMLStreamException {
 		XMLInputFactory xmlif=null;
 		XMLStreamReader xmlr=null;
@@ -103,13 +96,12 @@ public class MainLettura {
 <<<<<<< HEAD
 
 		 */
-=======
+
+		Data data = Data.estraiData("1244-32-76");
 		
->>>>>>> main
->>>>>>> Christian
+		System.out.println(data.getYear()+"-"+data.getMonth()+"-"+data.getDay());
+
 	}
-	
-	
 	
 }
 
