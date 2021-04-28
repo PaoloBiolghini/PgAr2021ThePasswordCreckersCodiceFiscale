@@ -1,5 +1,6 @@
 package it.unibs.fp.codicefiscale;
 
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -11,11 +12,11 @@ import org.w3c.dom.NodeList;
 public class MainLettura {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
 		try{
 			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 			DocumentBuilder Builder=factory.newDocumentBuilder();
-			Document doc=Builder.parse("Persone.xml");
+			Document doc=Builder.parse("inputPersone.xml");
 			
 			NodeList list=doc.getElementsByTagName("persona");
 			
@@ -25,13 +26,19 @@ public class MainLettura {
 				System.out.println(n.getNodeName());
 				Element e=(Element)n;
 				System.out.println("nome:"+e.getElementsByTagName("nome").item(0).getTextContent());
-				
 			}
 		}
-
 		catch(Exception e) {
 			System.out.println("something doesn't work");
 		}
+		
 	}
-
+	
+	
 }
+
+
+
+
+
+
