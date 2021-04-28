@@ -1,6 +1,10 @@
 package it.unibs.fp.codicefiscale;
 
+<<<<<<< HEAD
 import javax.swing.*;
+=======
+
+>>>>>>> main
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.stream.XMLInputFactory;
@@ -18,6 +22,7 @@ import java.io.FileReader;
 
 public class MainLettura {
 
+<<<<<<< HEAD
 	public static void main(String[] args) throws XMLStreamException {
 		XMLInputFactory xmlif=null;
 		XMLStreamReader xmlr=null;
@@ -54,12 +59,20 @@ public class MainLettura {
 			xmlr.next();
 		}
 		/*
+=======
+	public static void main(String[] args) {
+		
+>>>>>>> main
 		try{
 			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
 			DocumentBuilder Builder=factory.newDocumentBuilder();
 			Document doc=Builder.parse("inputPersone.xml");
+<<<<<<< HEAD
 
 
+=======
+			
+>>>>>>> main
 			NodeList list=doc.getElementsByTagName("persona");
 			System.out.println(".................................");
 			
@@ -71,12 +84,23 @@ public class MainLettura {
 				System.out.println("nome:"+e.getElementsByTagName("nome").item(0).getTextContent());
 			}
 		}
-
 		catch(Exception e) {
 			System.out.println("something doesn't work");
 		}
+<<<<<<< HEAD
 
 		 */
+=======
+		
+>>>>>>> main
 	}
-
+	
+	
+	
 }
+
+
+
+
+
+
