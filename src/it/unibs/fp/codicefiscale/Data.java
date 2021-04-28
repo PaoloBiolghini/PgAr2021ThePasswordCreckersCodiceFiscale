@@ -1,5 +1,6 @@
 package it.unibs.fp.codicefiscale;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Data {
@@ -97,6 +98,13 @@ public class Data {
 		case 12 : return "T" ;
 		default : return "";
 		}
+	}
+	
+	public static String formatta(int giorno)
+	{
+		DecimalFormat formatter = new DecimalFormat("00");
+		String formattato = formatter.format(giorno);
+		return formattato;
 	}
 	
 }

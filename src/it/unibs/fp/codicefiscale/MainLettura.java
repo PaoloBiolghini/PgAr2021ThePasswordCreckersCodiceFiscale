@@ -100,6 +100,7 @@ public class MainLettura {
 		Data data = Data.estraiData("1244-32-76");
 		
 		System.out.println(data.getYear()+"-"+data.getMonth()+"-"+data.getDay());
+		System.out.println(Data.formatta(1));
 
 	}
 	
