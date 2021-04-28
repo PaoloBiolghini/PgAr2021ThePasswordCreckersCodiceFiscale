@@ -57,23 +57,22 @@ public class Data {
 				{
 				case 0 :
 					anno = scanner.nextInt();
-					i++;
 					break;
 				case 1 :
 					mese = scanner.nextInt();
-					i++;
 					break;
 				case 2 :
 					giorno = scanner.nextInt();
 					break;
 				} 
+				i++;
 			} else { 
 				scanner.next();
 				}
 		} scanner.close();
 		
 		Data birthday = new Data (giorno, mese , anno);
-		return birthday ;
+		return birthday;
 	}
 	
 }
