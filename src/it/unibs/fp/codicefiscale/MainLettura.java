@@ -51,6 +51,7 @@ public class MainLettura {
 						System.out.println("->" +xmlr.getText());
 					break;
 			}
+
 			xmlr.next();
 		}
 		/*

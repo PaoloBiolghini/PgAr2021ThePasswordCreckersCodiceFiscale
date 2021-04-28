@@ -4,23 +4,25 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
-	private String codicefiscale;
+	private StringBuffer codicefiscale;
 
 	private char sesso;
 	private Comune comune;
-	//class data di nascita
+	Data data;
 
 
-	public Persona(String nome, String cognome, String codicefiscale, char sesso, Comune comune) {
+	public Persona(String nome, String cognome, StringBuffer codicefiscale, char sesso, Comune comune) {
 		this.nome = nome;
 		this.cognome = cognome;
-		this.codicefiscale = codicefiscale;
+
 		this.sesso = sesso;
 		this.comune = comune;
+		this.codicefiscale = codice();
 	}
 //chiedere se è buona cosa mettere questo metodo in persona o farlo nel main, chiedere per la classe comune come faccio a prenderlo,e per la data,
-	//per la differenza nel utilizzo tra string e string buffer
-	public StringBuffer codice(String nome, String cognome, char sesso, Comune comune) {
+	//per la differenza nel utilizzo tra string e string buffer, errore nel push
+
+	public StringBuffer codice() {
 		StringBuffer codiceFiscale = new StringBuffer();
 		//prime 3 lettere del cognome
 		if (cognome.length() < 3) {
@@ -34,6 +36,8 @@ public class Persona {
 			codiceFiscale.append(nome);
 			codiceFiscale.append("X");
 		}else codiceFiscale.append(nameLetters(nome));
+//lettere anno di nascita
+//lettere comune
 
 
 
@@ -43,11 +47,13 @@ public class Persona {
 	private StringBuffer consonant(String checkCon){ //restituisce una stringa contenente le consonanti
 		StringBuffer cons = new StringBuffer();
 
+
 		for (int i = 0; i < checkCon.length(); i++)
 			if (isConsonant(checkCon.charAt(i))) {
 				cons.append(checkCon.charAt(i));
 			}
 		return cons;
+
 	}
 
 private StringBuffer vowel(String checkVow){ //restituisce una stringa contenente le vocali
@@ -64,7 +70,11 @@ private StringBuffer vowel(String checkVow){ //restituisce una stringa contenent
 		StringBuffer lett = new StringBuffer(3);
 
 		StringBuffer lastNameCons=new StringBuffer(consonant(check));
-		lett.append(lastNameCons);
+		StringBuffer lastNameVow=new StringBuffer(vowel(check));
+		lastNameCons.append(lastNameVow);
+		lett.append(lastNameCons.substring(0,3));
+
+/*
 		if(lastNameCons.length()<3){
 			StringBuffer lastNameVow=new StringBuffer(vowel(check));
 			int i=0;
@@ -73,7 +83,7 @@ private StringBuffer vowel(String checkVow){ //restituisce una stringa contenent
 				i++;
 			}
 		}
-
+*/
 			return lett;
 
 
@@ -82,22 +92,17 @@ private StringBuffer vowel(String checkVow){ //restituisce una stringa contenent
 	private StringBuffer nameLetters(String check){
 		StringBuffer lett = new StringBuffer(3);
 
+
 		StringBuffer nameCons=new StringBuffer(consonant(check));
 		if(nameCons.length()>=4){
 			lett.append(nameCons.charAt(0));
 			lett.append(nameCons.charAt(2));
 			lett.append(nameCons.charAt(3));
-		}else if(nameCons.length()==3){
-			for (int i=0;i<3;i++)
-			lett.append(nameCons.charAt(i));
-
-		}else if(nameCons.length()<2){
+		}else{
 			StringBuffer nameVow=new StringBuffer(vowel(check));
-			int i=0;
-			while (lett.length()<3){
-				lett.append(nameVow.charAt(i));
-				i++;
-			}
+			nameCons.append(nameVow);
+			lett.append(nameCons.substring(0,3));
+
 		}
 
 return lett;
