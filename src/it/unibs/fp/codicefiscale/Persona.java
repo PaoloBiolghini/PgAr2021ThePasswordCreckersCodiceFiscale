@@ -20,13 +20,13 @@ public class Persona {
 	private Data data;
 	/**
 	 * variabile usata per il carattere di controllo, tiene traccia di tutte le lettere
-	 *possibili
+	 *possibili e viene usata per il calcolo dei valori in posizione pari
  	 */
 	private final static char[] LETTEREPARI={'0','1','2','3','4','5','6','7','8','9','A','B',
 			'C','D','E','F','G','H','I','J','K','L','M','N',
 			'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
 	/**
-	 * variabile usata per il carattere di controllo, contieen i valori delle lettere in posizione dispari
+	 * variabile usata per il carattere di controllo, contiene i valori delle lettere in posizione dispari
  	 */
 	private final static int[] LETTEREDISPARI={1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 1, 0, 5, 7, 9, 13,
 			15, 17, 19, 21, 2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16,
@@ -187,7 +187,7 @@ return lett;
 	 * @param codice
 	 * @return
 	 */
-//uso un solo vettore per calcolare il valore
+
 	private int interoControllo(StringBuffer codice){
 		int controllo,sommaPari=0,sommaDispari=0,indice;
 		char chr;
@@ -195,16 +195,18 @@ return lett;
 			chr=codice.charAt(i);
 			if((i+1)%2==0){// il primo carattere parte da 0, devo quindi aggiungere una unita
 				indice= Arrays.binarySearch(LETTEREPARI,chr);
-				sommaPari+=(indice>=10) ? indice-10:indice;//vedendo la tabella di conversione delle lettere pari, le prime lettere
+				sommaPari+=(indice>=10) ? indice-10:indice;//vedendo la tabella di conversione delle lettere pari, le prime 10 lettere
 															//hanno i valori da 0-9, a partire da A si ha di nuovo 0 quindi al indice trovato si puo sottrare 10
-															//unita
+															//unita(per esempio Z: valore 25 indice 35)
 			}else {
 				indice=Arrays.binarySearch(LETTEREPARI,chr);
 				sommaDispari+=LETTEREDISPARI[indice];
 			}
 		}
 			controllo=(sommaDispari+sommaDispari)%26;
-		return controllo + 10;
+		return controllo + 10; //aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire dalla lettera A(che è 10 posizioni piu avanti)
+								//esempio: se il resto e' 18(lettera S nella tabella di wiki) aggiungendo 10 vado in posizione 28 del array(lettera S)
+								//N.B il resto non sara mai maggiore di 25
 
 }
 
