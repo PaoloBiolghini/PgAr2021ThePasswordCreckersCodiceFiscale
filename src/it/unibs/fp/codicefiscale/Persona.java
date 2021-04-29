@@ -34,8 +34,9 @@ public class Persona {
 	public String getSesso() {
 		return sesso1;
 	}
-	public Data getCompleanno() {
-		return compleanno; 
+	public String getCompleanno() {
+		String data=compleanno.getDay()+"-"+compleanno.getMonth()+"-"+compleanno.getYear();
+		return data; 
 	}
 	
 	private String codicefiscale;

@@ -30,7 +30,7 @@ public class Comune {
 	 * @param nome
 	 * @return
 	 */
-	public static boolean isValid(String nome){
+	public static boolean isValid(String cod){
 		boolean esiste = false ;
 		try{
 			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -44,9 +44,9 @@ public class Comune {
 				Node n=list.item(i);
 				Element e=(Element)n;
 				
-				String nomeComune = e.getElementsByTagName("nome").item(0).getTextContent() ;
+				String codiceComune = e.getElementsByTagName("codice").item(0).getTextContent() ;
 				
-				if(nomeComune.equals(nome)) {
+				if(codiceComune.equals(cod)) {
 					
 					return true;
 				}

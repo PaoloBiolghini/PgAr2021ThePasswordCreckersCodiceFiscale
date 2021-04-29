@@ -11,10 +11,13 @@ import javax.xml.stream.XMLStreamReader;
 public class LetturaCodici {
 
 	private static String NOMEFILE="codiciFiscali.xml";
+	private static ArrayList<String>codiciCorretti=new ArrayList();
+	private static ArrayList<String>codiciSbagliati=new ArrayList();
 	
 	public static void main(String[] args) throws XMLStreamException {
 		
-		letturaCodicixml();
+		System.out.println(letturaCodicixml(true).size());
+		System.out.println(letturaCodicixml(false).size());
 	}
 	
 	public static XMLStreamReader creazioneReader()
@@ -34,46 +37,62 @@ public class LetturaCodici {
 		return xmlr;
 	}
 	
-	public static ArrayList<String> letturaCodicixml() throws XMLStreamException 
+	/**
+	 * 
+	 * legge tutti i codici ed in base al valore in input restituisce un arraylist di codici giusti o sbagliati
+	 * inserisci treu per avere quelli corretti false per avere quelli sbagliati
+	 * @return
+	 * @throws XMLStreamException
+	 */
+	public static ArrayList<String> letturaCodicixml(boolean type) throws XMLStreamException 
 	{		
-		XMLStreamReader xmlr=creazioneReader();
-		ArrayList<String> codiciValidi=new ArrayList();
-		String cod=null;
-		
-		try {
-			while(xmlr.hasNext()){
-				switch (xmlr.getEventType()){
-		
-					case  XMLStreamConstants.END_ELEMENT:
-						
-						if(xmlr.getLocalName().equals("codice"))
-						{
+		if(codiciCorretti.size()==0 && codiciSbagliati.size()==0)
+		{
+			System.out.println("entra nel calcolo");
+			XMLStreamReader xmlr=creazioneReader();
+			ArrayList<String> codiciCercati=new ArrayList();
+			String cod=null;
+			
+			try {
+				while(xmlr.hasNext()){
+					switch (xmlr.getEventType()){
+			
+						case  XMLStreamConstants.END_ELEMENT:
 							
-							if(ControlloCodiceFiscale.controllaCodice(cod)) {
-								codiciValidi.add(cod);		
+							if(xmlr.getLocalName().equals("codice"))
+							{
+								
+								if(ControlloCodiceFiscale.controllaCodice(cod)) {
+									codiciCorretti.add(cod)	;	
+								}
+								else {
+									codiciSbagliati.add(cod);
+										
+								}
+								
 							}
-							else {
-								//System.out.println(cod+" non è valido");
-							}
+							break;
 							
-						}
-						break;
-						
-					case XMLStreamConstants.CHARACTERS:
-						if(xmlr.getText().trim().length() >0)
-							cod=xmlr.getText();
-							
-						break;
+						case XMLStreamConstants.CHARACTERS:
+							if(xmlr.getText().trim().length() >0)
+								cod=xmlr.getText();
+								
+							break;
+					}
+					xmlr.next();
 				}
-				xmlr.next();
+			} 
+			
+			catch (XMLStreamException e) {
+				e.printStackTrace();
 			}
-		} 
-		
-		catch (XMLStreamException e) {
-			e.printStackTrace();
 		}
+			
 		
-		return codiciValidi;
+		if(type)
+		return codiciCorretti;
+		
+		return codiciSbagliati;
 		
 	}
 	
