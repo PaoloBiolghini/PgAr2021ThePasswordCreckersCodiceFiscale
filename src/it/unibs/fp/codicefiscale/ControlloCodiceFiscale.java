@@ -19,7 +19,7 @@ public class ControlloCodiceFiscale {
 	//ritorna false se è presente un qualche tipo di errore
 	public static boolean controllaCodice(String codice)
 	{
-if(codice.length()!=16) return false;
+         if(codice.length()!=16) return false;
 		
 		if(controlloLettere(codice.substring(0,3))==false) return false;
 		
