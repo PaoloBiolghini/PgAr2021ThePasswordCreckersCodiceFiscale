@@ -15,10 +15,21 @@ import org.w3c.dom.NodeList;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainLettura {
 
 	public static void main(String[] args) throws XMLStreamException {
+//comune costruttore vuoto, chaimo metodo per generare ogni volta una stringa?
+		ArrayList<String> codici=new ArrayList<>();
+		String nome,cognome;
+		String c;
+		Data da;
+
+		Persona p;
+		String sesso;
+		ArrayList<Persona> persone=new ArrayList<>();
 		XMLInputFactory xmlif=null;
 		XMLStreamReader xmlr=null;
 
@@ -37,11 +48,25 @@ public class MainLettura {
 				case XMLStreamConstants.START_DOCUMENT:				//leggere cosa fa
 					System.out.println("Inizio lettura file inputPerosne" ); break;
 				case XMLStreamConstants.START_ELEMENT:
+						switch (xmlr.getLocalName().toLowerCase()){
+							case "persona":
+								nome=xmlr.getAttributeLocalName(0);break;
+							case "cognome":
+								cognome=xmlr.getAttributeLocalName(0);break;
+							case "sesso":
+								sesso=xmlr.getAttributeLocalName(0);break;
+							case "comune_nascita":
+								c=Comune.getCodiceComune(xmlr.getAttributeLocalName(0));break;
+							case "data_nascita":
+							da=Data.estraiData(xmlr.getAttributeLocalName(0));break;
+
+
+						}
 					System.out.println("Tag " +xmlr.getLocalName());
 					for(int i=0; i< xmlr.getAttributeCount();i++)
 						System.out.printf(" -> attributo %s->%s%n", xmlr.getAttributeLocalName(i),xmlr.getAttributeValue(i));
 					break;
-				case XMLStreamConstants.END_DOCUMENT:
+				case XMLStreamConstants.END_ELEMENT:
 					System.out.println("end-tag: " + xmlr.getLocalName());
 					break;
 				case XMLStreamConstants.COMMENT:
@@ -51,7 +76,7 @@ public class MainLettura {
 						System.out.println("->" +xmlr.getText());
 					break;
 			}
-
+			//System.out.println("---------");
 			xmlr.next();
 		}
 		/*
