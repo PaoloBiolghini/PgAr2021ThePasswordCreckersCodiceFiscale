@@ -13,7 +13,7 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
-	private StringBuffer codicefiscale;
+	private String codicefiscale;
 
 	private String sesso;
 	private String comune;
@@ -76,7 +76,7 @@ public class Persona {
 		this.data=data;
 	     this.sesso=sesso;
 		this.comune = comune;
-		this.codicefiscale = codice();
+		this.codicefiscale = codice().toString();
 	}
 
 
@@ -120,7 +120,7 @@ codiceFiscale.append(ultimoCarattere);
 		return codiceFiscale;
 	}
 
-	public StringBuffer getCodiceFiscale() {
+	public String getCodiceFiscale() {
 		return codicefiscale;
 	}
 
