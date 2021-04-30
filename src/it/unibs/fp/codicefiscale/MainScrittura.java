@@ -145,9 +145,9 @@ public class MainScrittura {
 	
 	
 	
-	public static String controlloCodici(StringBuffer codiceFiscale)
+	public static String controlloCodici(String codiceFiscale)
 	{
-		String cod=(String)codiceFiscale;
+		
 		if(!codiciCorretti.contains(codiceFiscale))
 		{
 			return "ASSENTE";
