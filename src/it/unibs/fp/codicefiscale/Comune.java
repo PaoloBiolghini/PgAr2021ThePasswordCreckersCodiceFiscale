@@ -40,10 +40,8 @@ public class Comune {
 	 * @param codice
 	 * @return
 	 */
-
 	public static boolean isValid(String codice) {
 		return codiciComuni.contains(codice);
-
 	}
 
 	/**
@@ -64,12 +62,9 @@ public class Comune {
 			NodeList list = doc.getElementsByTagName("comune");
 
 			for (int i = 0; i < list.getLength(); i++) {
-
 				Node n = list.item(i);
 				Element e = (Element) n;
-
 				String nomeComune = e.getElementsByTagName("nome").item(0).getTextContent();
-
 				if (nomeComune.equals(nome)) {
 					codiceComune = e.getElementsByTagName("codice").item(0).getTextContent();
 				}
@@ -77,7 +72,6 @@ public class Comune {
 		} catch (Exception e) {
 			System.out.println("Errore");
 		}
-
 		return codiceComune;
 	}
 
@@ -117,8 +111,9 @@ public class Comune {
 						codice = xmlr.getText();
 						codici.add(codice);
 					}
-					temp = "";
+					temp = "" ;
 					break;
+				default : break ;
 				}
 				xmlr.next();
 			}
@@ -126,7 +121,6 @@ public class Comune {
 			System.out.println("nope");
 			System.out.println(e.getMessage());
 		}
-
 		return codici;
 	}
 

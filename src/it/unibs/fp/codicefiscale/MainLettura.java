@@ -34,7 +34,7 @@ public class MainLettura {
 		try {
 
 			xmlif = XMLInputFactory.newInstance();
-			xmlr = xmlif.createXMLStreamReader("comuni.xml", new FileInputStream("comuni.xml"));
+			xmlr = xmlif.createXMLStreamReader("inputPersone.xml", new FileInputStream("inputPersone.xml"));
 		} catch (Exception e) {
 			System.out.println("Errore inizializzazione del reader:");
 			System.out.println(e.getMessage());

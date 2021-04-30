@@ -18,6 +18,7 @@ public class LetturaCodici {
 
 		System.out.println(letturaCodicixml(true).size());
 		System.out.println(letturaCodicixml(false).size());
+	
 	}
 
 	public static XMLStreamReader creazioneReader() {
@@ -64,9 +65,7 @@ public class LetturaCodici {
 								codiciCorretti.add(cod);
 							} else {
 								codiciSbagliati.add(cod);
-
 							}
-
 						}
 						break;
 
