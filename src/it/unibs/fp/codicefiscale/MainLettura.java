@@ -109,7 +109,7 @@ public class MainLettura {
 		}
 		
 
-		MainScrittura.creaxnk(listaPersone);
+		MainScrittura.creaxml(listaPersone);
 		
 
 	}

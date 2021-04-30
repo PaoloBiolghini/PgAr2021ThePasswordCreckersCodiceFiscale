@@ -34,6 +34,32 @@ public class Persona {
 	};
 
 
+	public String getNome() {
+		return nome;
+	}
+
+
+	public String getCognome() {
+		return cognome;
+	}
+
+
+	public String getSesso() {
+		return sesso;
+	}
+
+
+	public String getComune() {
+		return comune;
+	}
+
+
+	public String getCompleanno() {
+		
+		return data.getDay()+"-"+data.getMonth()+"-"+data.getYear();
+	}
+
+
 	/**
 	 * costruttore della classe persona: i parametri da passare in oridene sono: nome,cognome,sesso
 	 * comune,data di nascita
