@@ -27,14 +27,14 @@ import org.w3c.dom.NodeList;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.util.ArrayList;
 
 public class MainLettura {
 
 	public static void main(String[] args) throws XMLStreamException {
 		XMLInputFactory xmlif=null;
 		XMLStreamReader xmlr=null;
-
-
+		
 		try{
 
 			xmlif=XMLInputFactory.newInstance();
@@ -46,7 +46,7 @@ public class MainLettura {
 		while(xmlr.hasNext()){
 			switch (xmlr.getEventType()){
 				case XMLStreamConstants.START_DOCUMENT:				//leggere cosa fa
-					System.out.println("Inizio lettura file inputPerosne" ); break;
+					System.out.println("Inizio lettura file inputPersone" ); break;
 				case XMLStreamConstants.START_ELEMENT:
 					System.out.println("Tag " +xmlr.getLocalName());
 					for(int i=0; i< xmlr.getAttributeCount();i++)
@@ -61,18 +61,16 @@ public class MainLettura {
 					if(xmlr.getText().trim().length() >0)
 						System.out.println("->" +xmlr.getText());
 					break;
+			}
+		xmlr.next();
 		}
-
-
-		Data data = Data.estraiData("1244-32-76");
+		System.out.println(Comune.getCodiceComune("ISEO"));
+		System.out.println(Comune.codiciComuni.get(8091));
+		System.out.println(Comune.isValid(Comune.getCodiceComune("ISEO")));
+	}
 		
-		System.out.println(data.getYear()+"-"+data.getMonth()+"-"+data.getDay());
-		System.out.println(Data.formatta(1));
+	}
 
-	}
-	
-	}
-}
 
 
 
