@@ -13,7 +13,7 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
-	private StringBuffer codicefiscale;
+	private String codicefiscale;
 
 	private String sesso;
 	private String comune;
@@ -49,7 +49,7 @@ public class Persona {
 		this.data=data;
 	     this.sesso=sesso;
 		this.comune = comune;
-		this.codicefiscale = codice();
+		this.codicefiscale = codice().toString();
 	}
 
 
@@ -60,7 +60,8 @@ public class Persona {
 	 */
 	public StringBuffer codice() {
 		StringBuffer codiceFiscale = new StringBuffer();
-		char ultimoCarattere;
+		String cod;
+
 		//prime 3 lettere del cognome
 		if (cognome.length() < 3) {
 			codiceFiscale.append(cognome);
@@ -87,13 +88,13 @@ codiceFiscale.append(data.mese(data.getMonth()));
 
 codiceFiscale.append(Comune.getCodiceComune(comune));
 //carattere controllo
-ultimoCarattere=LETTEREPARI[interoControllo(codiceFiscale)];
-codiceFiscale.append(ultimoCarattere);
+
+codiceFiscale.append(lastCharacter(codiceFiscale));
 
 		return codiceFiscale;
 	}
 
-	public StringBuffer getCodicefiscale() {
+	public String getCodicefiscale() {
 		return codicefiscale;
 	}
 
@@ -192,9 +193,10 @@ return lett;
 	 * @return
 	 */
 
-	private int interoControllo(StringBuffer codice){
+	public static char lastCharacter(StringBuffer codice){
 		int controllo,sommaPari=0,sommaDispari=0,indice;
 		char chr;
+		char lastChar;
 		for (int i=0;i<codice.length();i++){
 			chr=codice.charAt(i);
 			if((i+1)%2==0){// il primo carattere parte da 0, devo quindi aggiungere una unita
@@ -209,7 +211,9 @@ return lett;
 			}
 		}
 			controllo=(sommaPari+sommaDispari)%26;
-		return controllo + 10; //aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire dalla lettera A(che è 10 posizioni piu avanti)
+		lastChar=LETTEREPARI[controllo+10];//aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire dalla lettera A(che è 10 posizioni piu avanti)
+
+		return lastChar;
 								//esempio: se il resto e' 18(lettera S nella tabella resto di wiki) aggiungendo 10 vado in posizione 28 del array(lettera S)
 								//N.B il resto non sara mai maggiore di 25
 
