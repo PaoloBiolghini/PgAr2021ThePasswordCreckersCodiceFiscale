@@ -110,47 +110,7 @@ public class MainLettura {
 		System.out.println(listaPersone.get(0).getCodicefiscale());
 		System.out.println(listaPersone.get(1).getCodicefiscale());
 		System.out.println(listaPersone.get(2).getCodicefiscale());
-		/*
-=======
-	public static void main(String[] args) {
-		
-<<<<<<< HEAD
-=======
->>>>>>> main
->>>>>>> Christian
-		try{
-			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-			DocumentBuilder Builder=factory.newDocumentBuilder();
-			Document doc=Builder.parse("inputPersone.xml");
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-
-=======
->>>>>>> Christian
-			
->>>>>>> main
-			NodeList list=doc.getElementsByTagName("persona");
-			System.out.println(".................................");
-			
-			for(int i=0;i<list.getLength();i++)
-			{
-				Node n=list.item(i);
-				System.out.println(n.getNodeName());
-				Element e=(Element)n;
-				System.out.println("nome:"+e.getElementsByTagName("nome").item(0).getTextContent());
-			}
-		}
-		catch(Exception e) {
-			System.out.println("something doesn't work");
-		}
-<<<<<<< HEAD
-		
-=======
-<<<<<<< HEAD
-
-		 */
 
 		Data data = Data.estraiData("1244-32-76");
 		
