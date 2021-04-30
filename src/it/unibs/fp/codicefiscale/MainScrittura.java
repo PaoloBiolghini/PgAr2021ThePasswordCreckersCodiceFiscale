@@ -251,5 +251,5 @@ public class MainScrittura {
 			 System.out.println("Errore nella scrittura"); 
 		} 
 	}
-	
+
 }
