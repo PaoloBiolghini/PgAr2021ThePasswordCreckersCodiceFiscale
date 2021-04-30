@@ -13,15 +13,7 @@ public class MainScrittura {
 	private static ArrayList<String> codiciCorretti;
 	private static ArrayList<String> codiciSbagliati;
 	
-	/*public static void main(String[] args) throws XMLStreamException {
-		
-		
-		ArrayList <String> cod=new ArrayList();
-		cod.add("RRAMHL24M31L584H");
-		cod.add("VSPRHD92H11C624H");
-		
-		
-	}*/
+	
 	
 	
 	
@@ -55,7 +47,7 @@ public class MainScrittura {
 		
 	
 	
-	public static void inizioxml(ArrayList<Persona> listaPersone) throws XMLStreamException
+	public static void creaxml(ArrayList<Persona> listaPersone) throws XMLStreamException
 	{
 		XMLStreamWriter xmlw = getDocument(); 
 		
