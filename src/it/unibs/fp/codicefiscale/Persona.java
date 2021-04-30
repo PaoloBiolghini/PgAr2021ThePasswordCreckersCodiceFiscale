@@ -116,7 +116,7 @@ codiceFiscale.append(data.mese(data.getMonth()));
 codiceFiscale.append(Comune.getCodiceComune(comune));
 //carattere controllo
 
-codiceFiscale.append(lastCharacter(codiceFiscale));
+codiceFiscale.append(lastCharacter(codiceFiscale.toString()));
 
 		return codiceFiscale;
 	}
@@ -224,7 +224,7 @@ return lett;
 	 * @return
 	 */
 
-	public static char lastCharacter(StringBuffer codice){
+	public static char lastCharacter(String codice){
 		int controllo,sommaPari=0,sommaDispari=0,indice;
 		char chr;
 		char lastChar;
