@@ -13,6 +13,20 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
+	private String codiceFiscale;
+	private String comune1;
+	private String sesso1;
+	private Data compleanno;
+
+	public Persona(String nome, String cognome, String comune1, String sesso, String compleanno) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.comune1 = comune1;
+		this.sesso1 = sesso;
+		this.compleanno = Data.estraiData(compleanno);
+	}
+
 	private String codicefiscale;
 
 	private String sesso;
@@ -34,14 +48,37 @@ public class Persona {
 	};
 
 
+
 	public String getNome() {
 		return nome;
 	}
-
-
 	public String getCognome() {
 		return cognome;
 	}
+
+
+	public String getCodiceFiscale() {
+		return codiceFiscale;
+	}
+
+	public String getComune() {
+		return comune1;
+	}
+
+	public String getSesso() {
+		return sesso1;
+	}
+
+	public String getCompleanno() {
+		String data = compleanno.getDay() + "-" + compleanno.getMonth() + "-" + compleanno.getYear();
+		return data;
+	}
+
+//chiedere se è buona cosa mettere questo metodo in persona o farlo nel main, chiedere per la classe comune come faccio a prenderlo,e per la data,
+	// per la differenza nel utilizzo tra string e string buffer
+	public StringBuffer codice(String nome, String cognome, char sesso, Comune comune) {
+		StringBuffer codiceFiscale = new StringBuffer();
+		// prime 3 lettere del cognome
 
 
 	public String getSesso() {
@@ -89,16 +126,22 @@ public class Persona {
 		StringBuffer codiceFiscale = new StringBuffer();
 		char ultimoCarattere;
 		//prime 3 lettere del cognome
+
 		if (cognome.length() < 3) {
 			codiceFiscale.append(cognome);
 			codiceFiscale.append("X");
-		} else codiceFiscale.append(lastNametLetters(cognome));
+		} else
+			codiceFiscale.append(lastNametLetters(cognome));
 
-		//lettere nome
+		// lettere nome
 
-		if(nome.length()<3){
+		if (nome.length() < 3) {
 			codiceFiscale.append(nome);
 			codiceFiscale.append("X");
+
+		} else
+			codiceFiscale.append(nameLetters(nome));
+
 		}else codiceFiscale.append(nameLetters(nome));
 //lettere anno di nascita
 codiceFiscale.append(data.getLastTwoDigitsYear());
@@ -117,8 +160,12 @@ codiceFiscale.append(Comune.getCodiceComune(comune));
 ultimoCarattere=LETTEREPARI[interoControllo(codiceFiscale)];
 codiceFiscale.append(ultimoCarattere);
 
+
 		return codiceFiscale;
 	}
+
+
+	private StringBuffer consonant(String checkCon) { // restituisce una stringa contenente le consonanti
 
 	public String getCodiceFiscale() {
 		return codicefiscale;
@@ -131,6 +178,7 @@ codiceFiscale.append(ultimoCarattere);
 	 * @return
 	 */
 	private StringBuffer consonant(String checkCon){
+
 		StringBuffer cons = new StringBuffer();
 
 
@@ -141,6 +189,30 @@ codiceFiscale.append(ultimoCarattere);
 		return cons;
 
 	}
+
+
+	private StringBuffer vowel(String checkVow) { // restituisce una stringa contenente le vocali
+		StringBuffer vow = new StringBuffer();
+		for (int i = 0; i < checkVow.length(); i++)
+			if (!isConsonant(checkVow.charAt(i))) {
+				vow.append(checkVow.charAt(i));
+			}
+		return vow;
+	}
+
+	private StringBuffer lastNametLetters(String check) {
+		StringBuffer lett = new StringBuffer(3);
+
+		StringBuffer lastNameCons = new StringBuffer(consonant(check));
+		lett.append(lastNameCons);
+		if (lastNameCons.length() < 3) {
+			StringBuffer lastNameVow = new StringBuffer(vowel(check));
+			int i = 0;
+			while (lett.length() < 3) {
+				lett.append(lastNameVow.charAt(i));
+				i++;
+			}
+		}
 
 	/**
 	 * metodo che accetta una stringa e restituisce una stringa contenete
@@ -174,12 +246,31 @@ codiceFiscale.append(ultimoCarattere);
 		lett.append(lastNameCons.substring(0,3));//prendo solo i primi 3 caratteri
 
 
-			return lett;
-
+		return lett;
 
 	}
 
-	/**
+
+	private StringBuffer nameLetters(String check) {
+		StringBuffer lett = new StringBuffer(3);
+
+		StringBuffer nameCons = new StringBuffer(consonant(check));
+		if (nameCons.length() >= 4) {
+			lett.append(nameCons.charAt(0));
+			lett.append(nameCons.charAt(2));
+			lett.append(nameCons.charAt(3));
+		} else if (nameCons.length() == 3) {
+			for (int i = 0; i < 3; i++)
+				lett.append(nameCons.charAt(i));
+
+		} else if (nameCons.length() < 2) {
+			StringBuffer nameVow = new StringBuffer(vowel(check));
+			int i = 0;
+			while (lett.length() < 3) {
+				lett.append(nameVow.charAt(i));
+				i++;
+			}
+ /**
 	 * metodo usato per generare le 3 lettere del nome della persona,
 	 * come parametro passiamo il nome e ne restituira una stringa che contiene
 	 * 3 lettere seguendo alcune regole
@@ -203,11 +294,18 @@ codiceFiscale.append(ultimoCarattere);
 
 		}
 
-return lett;
-
+		return lett;
 
 	}
 
+
+	private int numConsonant(String check) {
+		int cont = 0;
+		for (int i = 0; i < check.length(); i++) {
+			if (isConsonant(check.charAt(i)))
+				cont++;
+    }
+  }
 	/**
 	 * metodo usato per generare il carattere di controllo, prendendo i caratteri
 	 * ricavati in precedenza mettendo da parte
@@ -234,6 +332,7 @@ return lett;
 				indice=Arrays.binarySearch(LETTEREPARI,chr);
 				sommaDispari+=LETTEREDISPARI[indice];
 			}
+
 		}
 			controllo=(sommaPari+sommaDispari)%26;
 		return controllo + 10; //aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire dalla lettera A(che è 10 posizioni piu avanti)
@@ -248,8 +347,6 @@ return lett;
 	 * @return
 	 */
 	private boolean isConsonant(char check) {
-
-
 		String vocali = "aeiouAEIOU";
 		return (vocali.indexOf(check) == -1) ? true : false;
 	}
