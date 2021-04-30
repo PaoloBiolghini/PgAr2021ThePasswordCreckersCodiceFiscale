@@ -20,7 +20,7 @@ public class Persona {
 	private Data data;
 	/**
 	 * variabile usata per il carattere di controllo, tiene traccia di tutte le lettere
-	 *possibili e viene usata per il calcolo dei valori in posizione pari
+	 * possibili e viene usata per il calcolo dei valori in posizione pari
  	 */
 	private final static char[] LETTEREPARI={'0','1','2','3','4','5','6','7','8','9','A','B',
 			'C','D','E','F','G','H','I','J','K','L','M','N',
@@ -51,8 +51,7 @@ public class Persona {
 		this.comune = comune;
 		this.codicefiscale = codice();
 	}
-//chiedere se è buona cosa mettere questo metodo in persona o farlo nel main, chiedere per la classe comune come faccio a prenderlo,e per la data,
-	//per la differenza nel utilizzo tra string e string buffer, errore nel push
+
 
 	/**
 	 * Metodo per generare il codice fiscale della persona
@@ -78,8 +77,9 @@ public class Persona {
 codiceFiscale.append(data.getLastTwoDigitsYear());
 codiceFiscale.append(data.mese(data.getMonth()));
 //genere
+
 		if (sesso.equalsIgnoreCase("m")) {
-			codiceFiscale.append(data.formatta(data.getDay()));  //provare con binario
+			codiceFiscale.append(data.formatta(data.getDay()));
 		} else {
 			codiceFiscale.append(data.getDayFemale());
 		}
@@ -93,13 +93,17 @@ codiceFiscale.append(ultimoCarattere);
 		return codiceFiscale;
 	}
 
+	public StringBuffer getCodicefiscale() {
+		return codicefiscale;
+	}
+
 	/**
 	 * metodo che accetta una stringa e restituisce una stringa contenete
 	 * le consonanti presenti nella stringa
 	 * @param checkCon
 	 * @return
 	 */
-	private StringBuffer consonant(String checkCon){ //restituisce una stringa contenente le consonanti
+	private StringBuffer consonant(String checkCon){
 		StringBuffer cons = new StringBuffer();
 
 
@@ -195,17 +199,18 @@ return lett;
 			chr=codice.charAt(i);
 			if((i+1)%2==0){// il primo carattere parte da 0, devo quindi aggiungere una unita
 				indice= Arrays.binarySearch(LETTEREPARI,chr);
-				sommaPari+=(indice>=10) ? indice-10:indice;//vedendo la tabella di conversione delle lettere pari, le prime 10 lettere
-															//hanno i valori da 0-9, a partire da A si ha di nuovo 0 quindi al indice trovato si puo sottrare 10
-															//unita(per esempio Z: valore 25 indice 35)
+				sommaPari+=(indice>=10) ? indice-10:indice;
+				//vedendo la tabella di conversione delle lettere pari, le prime 10 lettere
+				//hanno i valori da 0-9, a partire da A si ha di nuovo 0 quindi al indice trovato si puo sottrare 10
+				//unita(per esempio Z: valore 25 indice 35)
 			}else {
 				indice=Arrays.binarySearch(LETTEREPARI,chr);
 				sommaDispari+=LETTEREDISPARI[indice];
 			}
 		}
-			controllo=(sommaDispari+sommaDispari)%26;
+			controllo=(sommaPari+sommaDispari)%26;
 		return controllo + 10; //aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire dalla lettera A(che è 10 posizioni piu avanti)
-								//esempio: se il resto e' 18(lettera S nella tabella di wiki) aggiungendo 10 vado in posizione 28 del array(lettera S)
+								//esempio: se il resto e' 18(lettera S nella tabella resto di wiki) aggiungendo 10 vado in posizione 28 del array(lettera S)
 								//N.B il resto non sara mai maggiore di 25
 
 }

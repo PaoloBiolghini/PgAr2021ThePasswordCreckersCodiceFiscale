@@ -22,16 +22,17 @@ public class MainLettura {
 
 	public static void main(String[] args) throws XMLStreamException {
 //comune costruttore vuoto, chaimo metodo per generare ogni volta una stringa?
-		ArrayList<String> codici=new ArrayList<>();
-		String nome,cognome;
-		String c;
-		Data da;
+		ArrayList<Persona> listaPersone=new ArrayList<>();
+		String nome="",cognome="",sesso="",c="",lastTag="";
 
-		Persona p;
-		String sesso;
+		Data da=null;
+
+		Persona p=null;
+
 		ArrayList<Persona> persone=new ArrayList<>();
 		XMLInputFactory xmlif=null;
 		XMLStreamReader xmlr=null;
+
 
 		try{
 
@@ -48,37 +49,65 @@ public class MainLettura {
 				case XMLStreamConstants.START_DOCUMENT:				//leggere cosa fa
 					System.out.println("Inizio lettura file inputPerosne" ); break;
 				case XMLStreamConstants.START_ELEMENT:
-						switch (xmlr.getLocalName().toLowerCase()){
-							case "persona":
-								nome=xmlr.getAttributeLocalName(0);break;
-							case "cognome":
-								cognome=xmlr.getAttributeLocalName(0);break;
-							case "sesso":
-								sesso=xmlr.getAttributeLocalName(0);break;
-							case "comune_nascita":
-								c=Comune.getCodiceComune(xmlr.getAttributeLocalName(0));break;
-							case "data_nascita":
-							da=Data.estraiData(xmlr.getAttributeLocalName(0));break;
+					lastTag=xmlr.getLocalName();
 
-
-						}
 					System.out.println("Tag " +xmlr.getLocalName());
 					for(int i=0; i< xmlr.getAttributeCount();i++)
 						System.out.printf(" -> attributo %s->%s%n", xmlr.getAttributeLocalName(i),xmlr.getAttributeValue(i));
 					break;
 				case XMLStreamConstants.END_ELEMENT:
+					if(xmlr.getLocalName().equalsIgnoreCase("persona")) {
+						p = new Persona(nome, cognome, sesso, c, da);
+						listaPersone.add(p);
+						System.out.println(listaPersone.get(0).getCodicefiscale());
+					}
 					System.out.println("end-tag: " + xmlr.getLocalName());
 					break;
 				case XMLStreamConstants.COMMENT:
 					System.out.println("commento "+xmlr.getText());break;
 				case XMLStreamConstants.CHARACTERS:
+					switch (lastTag.toLowerCase()){
+						case "nome":
+							nome=xmlr.getText().trim();
+							lastTag="";
+							System.out.println(nome);
+							break;
+						case "cognome":
+							cognome=xmlr.getText().trim();
+							lastTag="";
+							System.out.println(cognome);
+							break;
+						case "sesso":
+							sesso=xmlr.getText().trim();
+							lastTag="";
+
+							break;
+						case "comune_nascita":
+							c=xmlr.getText();
+							lastTag="";
+
+							break;
+						case "data_nascita":
+							da=Data.estraiData(xmlr.getText().trim());
+							lastTag="";
+
+							break;
+
+
+					}
 					if(xmlr.getText().trim().length() >0)
-						System.out.println("->" +xmlr.getText());
+						System.out.println("->    " + xmlr.getText());
+
 					break;
 			}
-			//System.out.println("---------");
+
+
+
 			xmlr.next();
 		}
+		System.out.println(listaPersone.get(0).getCodicefiscale());
+		System.out.println(listaPersone.get(1).getCodicefiscale());
+		System.out.println(listaPersone.get(2).getCodicefiscale());
 		/*
 		try{
 			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
