@@ -24,14 +24,14 @@ public class MainLettura {
 
 	public static void main(String[] args) throws XMLStreamException {
 //comune costruttore vuoto, chaimo metodo per generare ogni volta una stringa?
-		ArrayList<Persona> listaPersone=new ArrayList<>();
+		
 		String nome="",cognome="",sesso="",c="",lastTag="";
 
 		Data da=null;
 
 		Persona p=null;
 
-		ArrayList<Persona> persone=new ArrayList<>();
+		ArrayList<Persona> listaPersone=new ArrayList<>();
 		XMLInputFactory xmlif=null;
 		XMLStreamReader xmlr=null;
 
@@ -109,11 +109,8 @@ public class MainLettura {
 		}
 		
 
-
-		Data data = Data.estraiData("1244-32-76");
+		MainScrittura.creaxnk(listaPersone);
 		
-		System.out.println(data.getYear()+"-"+data.getMonth()+"-"+data.getDay());
-		System.out.println(Data.formatta(1));
 
 	}
 	
