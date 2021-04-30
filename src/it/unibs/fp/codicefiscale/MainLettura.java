@@ -49,43 +49,7 @@ public class MainLettura {
 			}
 			xmlr.next();
 		}
-		/*
-=======
->>>>>>> Stashed changes
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		try{
-			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-			DocumentBuilder Builder=factory.newDocumentBuilder();
-			Document doc=Builder.parse("Persone.xml");
-			
-			NodeList list=doc.getElementsByTagName("persona");
-			
-			for(int i=0;i<list.getLength();i++)
-			{
-				Node n=list.item(i);
-				System.out.println(n.getNodeName());
-				Element e=(Element)n;
-				System.out.println("nome:"+e.getElementsByTagName("nome").item(0).getTextContent());
-			}
-		}
 
-		catch(Exception e) {
-			System.out.println("something doesn't work");
-		}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-		
-=======
-<<<<<<< HEAD
-
-		 */
-/*=======
-		
->>>>>>> main
->>>>>>> Christian*/
->>>>>>> Stashed changes
 	}
 
 }

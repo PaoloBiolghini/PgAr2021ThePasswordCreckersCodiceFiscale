@@ -4,15 +4,14 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
-<<<<<<< Updated upstream
+
 	private String codicefiscale;
 	private String codcomune;
 	private String sesso;
-	//class data di nascita
+
 	
 	
-=======
-//<<<<<<< HEAD
+
 	private String codiceFiscale;
 	private String comune1;
 	private String sesso1;
@@ -160,11 +159,8 @@ return lett;
 	}
 
 	private boolean isConsonant(char check) {
-
-
 		String vocali = "aeiouAEIOU";
 		return (vocali.indexOf(check) == -1) ? true : false;
 	}
-//>>>>>>> Christian
->>>>>>> Stashed changes
+
 }
