@@ -112,8 +112,8 @@ public class Persona {
 			codiceFiscale.append(data.getDayFemale());
 		}
 		//lettere comune
-		
-		codiceFiscale.append(Comune.getCodiceComune(comune));
+		System.out.println("----------"+Comune.getCodiceComune(comune.trim()));
+		codiceFiscale.append(Comune.getCodiceComune(comune.trim()));
 		//carattere controllo
 		
 		codiceFiscale.append(lastCharacter(codiceFiscale.toString()));

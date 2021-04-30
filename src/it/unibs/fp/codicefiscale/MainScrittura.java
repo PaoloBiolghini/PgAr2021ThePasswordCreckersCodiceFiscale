@@ -123,8 +123,8 @@ public class MainScrittura {
 		 //codici spaiati
 		 System.out.println("ARRIAVA a SPAIATI");
 		 xmlw.writeStartElement("spaiati"); 
-		 xmlw.writeAttribute("numero", Integer.toString(codiciCorretti.size()+0));
-		 for(int i=0;i<codiciCorretti.size()+0;i++)
+		 xmlw.writeAttribute("numero", Integer.toString(codiciCorretti.size()));
+		 for(int i=0;i<codiciCorretti.size();i++)
 		 {
 			 xmlw.writeStartElement("codice"); 
 			 xmlw.writeAttribute("id", Integer.toString(i));
@@ -155,6 +155,7 @@ public class MainScrittura {
 		
 		if(!codiciCorretti.contains(codiceFiscale))
 		{
+			System.out.println(codiceFiscale);
 			return "ASSENTE";
 		}
 		
