@@ -39,8 +39,9 @@ public class ControlloCodiceFiscale {
 		if(!controlloGiorno(codice.substring(8,9),Integer.parseInt(codice.substring(9,11))))return false;
 		
 		if(!controlloComune(codice.substring(11,15))) return false;
-		
-//		if(Persona.interoControllo(cod)!=lastChr) return false;
+	
+		if(Persona.lastCharacter(cod)!=lastChr) return false;
+
 		return true;
 	}
 	

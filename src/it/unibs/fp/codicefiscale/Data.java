@@ -50,7 +50,10 @@ public class Data {
 	 * @param data
 	 * @return Data
 	 */
-	public static Data estraiData(String data) {
+
+
+	public static Data estraiData (String data){
+
 		int anno = 0, mese = 0, giorno = 0;
 		anno = Integer.parseInt(data.substring(0, 4));
 		mese = Integer.parseInt(data.substring(5, 7));

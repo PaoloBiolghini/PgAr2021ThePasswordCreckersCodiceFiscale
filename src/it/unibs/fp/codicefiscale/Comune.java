@@ -15,18 +15,45 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+
 public class Comune {
-
-	private String nome;
-	private String codice;
+	
 	public static ArrayList<String> codiciComuni = Comune.leggiCodiciComuni();
-
 	/**
-	 * dato un codice restituisce true se valido , false altrimenti
-	 * 
-	 * @param codice
+	 * dato una Stringa (presumibilmente di un comune) restituisce vero se è presente in comuni.xml, false altrimenti
+	 * @param nome
 	 * @return
 	 */
+	
+	/*
+	public static boolean isValid(String cod){
+		boolean esiste = false ;
+		try{
+			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+			DocumentBuilder Builder=factory.newDocumentBuilder();
+			Document doc=Builder.parse("comuni.xml");
+			
+			NodeList list=doc.getElementsByTagName("comune");
+			
+			for(int i=0;i<list.getLength();i++){
+				
+				Node n=list.item(i);
+				Element e=(Element)n;
+				
+				String codiceComune = e.getElementsByTagName("codice").item(0).getTextContent() ;
+				
+				if(codiceComune.equals(cod)) {
+					
+					return true;
+				}
+			}
+		}
+		catch(Exception e) {
+			System.out.println("Errore");
+		}
+		return esiste ;
+	}
+	*/
 	public static boolean isValid(String codice) {
 		return codiciComuni.contains(codice);
 	}

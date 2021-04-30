@@ -25,6 +25,13 @@ public class MainLettura {
 	public static void main(String[] args) throws XMLStreamException {
 //comune costruttore vuoto, chaimo metodo per generare ogni volta una stringa?
 		
+		Persona Kevin = new Persona ("KEVIN","LIU", "M", "RHO",Data.estraiData("2001-07-27") );
+		Data d1 = Data.estraiData("2001-07-27");
+		System.out.println(Kevin.codice());
+		System.out.println(Kevin.getCompleanno());
+		System.out.println(d1.getDay()+" "+d1.getMonth()+" "+d1.getYear());
+		System.out.println(Comune.getCodiceComune("ISEO"));
+		
 		String nome="",cognome="",sesso="",c="",lastTag="";
 
 		Data da=null;
@@ -61,7 +68,7 @@ public class MainLettura {
 					if(xmlr.getLocalName().equalsIgnoreCase("persona")) {
 						p = new Persona(nome, cognome, sesso, c, da);
 						listaPersone.add(p);
-						System.out.println(listaPersone.get(0).getCodiceFiscale());
+						System.out.println(listaPersone.get(0).getCodicefiscale());
 					}
 					System.out.println("end-tag: " + xmlr.getLocalName());
 					break;

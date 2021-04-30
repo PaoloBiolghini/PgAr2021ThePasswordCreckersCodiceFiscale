@@ -32,27 +32,6 @@ public class Persona {
 	private final static int[] LETTEREDISPARI = { 1, 0, 5, 7, 9, 13, 15, 17, 19, 21, 1, 0, 5, 7, 9, 13, 15, 17, 19, 21,
 			2, 4, 18, 20, 11, 3, 6, 8, 12, 14, 16, 10, 22, 25, 24, 23 };
 
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCognome() {
-		return cognome;
-	}
-
-	public String getSesso() {
-		return sesso;
-	}
-
-	public String getComune() {
-		return comune;
-	}
-
-	public String getCompleanno() {
-
-		return data.getDay() + "-" + data.getMonth() + "-" + data.getYear();
-	}
-
 	/**
 	 * costruttore della classe persona: i parametri da passare in oridene sono:
 	 * nome,cognome,sesso comune,data di nascita
@@ -64,7 +43,6 @@ public class Persona {
 	 * @param data
 	 */
 	public Persona(String nome, String cognome, String sesso, String comune, Data data) {
-
 		this.nome = nome;
 		this.cognome = cognome;
 		this.data = data;
@@ -81,7 +59,8 @@ public class Persona {
 	 */
 	public StringBuffer codice() {
 		StringBuffer codiceFiscale = new StringBuffer();
-		char ultimoCarattere;
+		String cod;
+
 		// prime 3 lettere del cognome
 		if (cognome.length() < 3) {
 			codiceFiscale.append(cognome);
@@ -110,13 +89,13 @@ public class Persona {
 
 		codiceFiscale.append(Comune.getCodiceComune(comune));
 //carattere controllo
-		ultimoCarattere = LETTEREPARI[interoControllo(codiceFiscale)];
-		codiceFiscale.append(ultimoCarattere);
+
+		codiceFiscale.append(lastCharacter(codiceFiscale.toString()));
 
 		return codiceFiscale;
 	}
 
-	public String getCodiceFiscale() {
+	public String getCodicefiscale() {
 		return codicefiscale;
 	}
 
@@ -136,6 +115,31 @@ public class Persona {
 			}
 		return cons;
 
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public String getSesso() {
+		return sesso;
+	}
+
+	public String getComune() {
+		return comune;
+	}
+
+	public Data getData() {
+		return data;
+	}
+
+	public String getCompleanno() {
+
+		return data.getDay() + "-" + data.getMonth() + "-" + data.getYear();
 	}
 
 	/**
@@ -216,9 +220,10 @@ public class Persona {
 	 * @return
 	 */
 
-	private int interoControllo(StringBuffer codice) {
+	public static char lastCharacter(String codice) {
 		int controllo, sommaPari = 0, sommaDispari = 0, indice;
 		char chr;
+		char lastChar;
 		for (int i = 0; i < codice.length(); i++) {
 			chr = codice.charAt(i);
 			if ((i + 1) % 2 == 0) {// il primo carattere parte da 0, devo quindi aggiungere una unita
@@ -234,11 +239,13 @@ public class Persona {
 			}
 		}
 		controllo = (sommaPari + sommaDispari) % 26;
-		return controllo + 10; // aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire dalla
-								// lettera A(che è 10 posizioni piu avanti)
-								// esempio: se il resto e' 18(lettera S nella tabella resto di wiki) aggiungendo
-								// 10 vado in posizione 28 del array(lettera S)
-								// N.B il resto non sara mai maggiore di 25
+		lastChar = LETTEREPARI[controllo + 10];// aggiungendo 10 dieci posso prendere dal array LETTEREPARI a partire
+												// dalla lettera A(che è 10 posizioni piu avanti)
+
+		return lastChar;
+		// esempio: se il resto e' 18(lettera S nella tabella resto di wiki) aggiungendo
+		// 10 vado in posizione 28 del array(lettera S)
+		// N.B il resto non sara mai maggiore di 25
 
 	}
 
@@ -253,5 +260,4 @@ public class Persona {
 		String vocali = "aeiouAEIOU";
 		return (vocali.indexOf(check) == -1) ? true : false;
 	}
-
 }
