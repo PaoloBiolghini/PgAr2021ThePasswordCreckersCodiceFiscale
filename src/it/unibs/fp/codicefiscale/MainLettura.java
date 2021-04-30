@@ -61,7 +61,7 @@ public class MainLettura {
 					if(xmlr.getLocalName().equalsIgnoreCase("persona")) {
 						p = new Persona(nome, cognome, sesso, c, da);
 						listaPersone.add(p);
-						System.out.println(listaPersone.get(0).getCodicefiscale());
+						System.out.println(listaPersone.get(0).getCodiceFiscale());
 					}
 					System.out.println("end-tag: " + xmlr.getLocalName());
 					break;

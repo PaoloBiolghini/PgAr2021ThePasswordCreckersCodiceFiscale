@@ -124,7 +124,7 @@ public class Persona {
 
 	
 
-	public String getCodicefiscale() {
+	public String getCodiceFiscale() {
  
 		return codicefiscale;
 	}
