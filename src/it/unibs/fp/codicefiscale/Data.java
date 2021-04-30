@@ -52,33 +52,11 @@ public class Data {
 	 * @return Data
 	 */
 	public static Data estraiData (String data){
-		
-		Scanner scanner = new Scanner (data) ;
-		scanner.useDelimiter("-");
-		int anno = 0 , mese = 0 , giorno = 0 , i = 0 ;
-		
-		while (scanner.hasNext()) {
-			
-			if (scanner.hasNextInt()) {
-				switch (i)
-				{
-				case 0 :
-					anno = scanner.nextInt();
-					break;
-				case 1 :
-					mese = scanner.nextInt();
-					break;
-				case 2 :
-					giorno = scanner.nextInt();
-					break;
-				} 
-				i++;
-			} else { 
-				scanner.next();
-				}
-		} scanner.close();
-		
-		Data birthday = new Data (giorno, mese , anno);
+		int anno = 0, mese = 0, giorno = 0;
+		anno = Integer.parseInt(data.substring(0, 4));
+		mese = Integer.parseInt(data.substring(5, 7));
+		giorno = Integer.parseInt(data.substring(8, 10));
+		Data birthday = new Data(giorno, mese, anno);
 		return birthday;
 	}
 	
