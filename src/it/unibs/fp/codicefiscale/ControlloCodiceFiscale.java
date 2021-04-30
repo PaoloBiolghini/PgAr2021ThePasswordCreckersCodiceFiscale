@@ -14,8 +14,9 @@ public class ControlloCodiceFiscale {
 	 */
 
 	public static boolean controllaCodice(String codice) {
+		
 		char lastChr = codice.charAt(15);
-		StringBuffer copy = new StringBuffer(codice.substring(0, 15));
+
 		if (codice.length() != 16)
 			return false;
 
@@ -49,8 +50,8 @@ public class ControlloCodiceFiscale {
 		if (!controlloComune(codice.substring(11, 15)))
 			return false;
 
-		if (!Persona.lastCharacter(copy.equalsIgnoreCase(lastChr)))
-		return false;
+		if (!Persona.interoControllo(codice.equalsIgnoreCase(lastChr)))
+			return false;
 
 		return true;
 	}

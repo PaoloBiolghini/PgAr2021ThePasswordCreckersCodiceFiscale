@@ -252,20 +252,4 @@ public class MainScrittura {
 		} 
 	}
 	
-	
-	
-	public static String controlloCodici(StringBuffer codiceFiscale)
-	{
-		String cod= "";
-		
-		if(!codiciCorretti.contains(codiceFiscale))
-		{
-			return "ASSENTE";
-		}
-		
-		codiciCorretti.remove(codiceFiscale);
-		return cod;
-
-	}
-
 }
