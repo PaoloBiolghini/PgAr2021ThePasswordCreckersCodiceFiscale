@@ -106,7 +106,6 @@ public class ControlloCodiceFiscale {
 			{
 			 return true;
 			}else {
-				System.out.println("giorno:"+giorno+" mese"+mese);
 				return false;
 			}
 		
@@ -124,8 +123,7 @@ public class ControlloCodiceFiscale {
 	 * @return
 	 */
 	public static boolean controlloComune(String codice) {
-		if(!Comune.isValid(codice))
-			System.out.println("comune sbagliato"+codice);
+		
 		
 		return Comune.isValid(codice);
 		
