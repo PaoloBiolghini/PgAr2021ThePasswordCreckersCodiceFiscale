@@ -21,10 +21,6 @@ public class Comune {
 	private String codice;
 	public static ArrayList<String> codiciComuni = Comune.leggiCodiciComuni();
 
-
-public class Comune {
-	
-
 	/**
 	 * dato un codice restituisce true se valido , false altrimenti
 	 * 
@@ -43,8 +39,8 @@ public class Comune {
 	 * @return
 	 * @throws XMLStreamException
 	 */
-	public static String getCodiceComune(String nome) throws XMLStreamException {
-		String codiceComune="";
+	public static String getCodiceComune(String nome){
+		String codiceComune = "";
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder Builder = factory.newDocumentBuilder();
@@ -102,9 +98,10 @@ public class Comune {
 						codice = xmlr.getText();
 						codici.add(codice);
 					}
-					temp = "" ;
+					temp = "";
 					break;
-				default : break ;
+				default:
+					break;
 				}
 				xmlr.next();
 			}

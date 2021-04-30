@@ -70,7 +70,7 @@ public class Data {
 	public static String mese(int mese) {
 		switch (mese) {
 		case 1:
-			return "A"; 
+			return "A";
 		case 2:
 			return "B";
 		case 3:

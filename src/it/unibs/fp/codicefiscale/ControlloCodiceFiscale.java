@@ -14,6 +14,8 @@ public class ControlloCodiceFiscale {
 	 */
 
 	public static boolean controllaCodice(String codice) {
+		char lastChr = codice.charAt(15);
+		StringBuffer copy = new StringBuffer(codice.substring(0, 15));
 		if (codice.length() != 16)
 			return false;
 
@@ -47,34 +49,8 @@ public class ControlloCodiceFiscale {
 		if (!controlloComune(codice.substring(11, 15)))
 			return false;
 
-
-	public static boolean controllaCodice(String codice)
-	{
-		char lastChr=codice.charAt(15);
-		StringBuffer copy=new StringBuffer(codice.substring(0,15));
-         if(codice.length()!=16) return false;
-		
-		if(!controlloLettere(codice.substring(0,3))) return false;
-		
-		if(!controlloLettere(codice.substring(3,6))) return false;
-		
-		if(!controlloNumeri(codice.substring(6,8))) return false;
-		
-		if(!controlloLettere(codice.substring(8,9))) return false;
-		
-		if(!controlloNumeri(codice.substring(9,11))) return false;
-		
-		if(!controlloLettere(codice.substring(11,12))) return false;
-		
-		if(!controlloNumeri(codice.substring(12,15))) return false;
-		
-		if(!controlloLettere(codice.substring(15,16))) return false;
-		
-		if(!controlloGiorno(codice.substring(8,9),Integer.parseInt(codice.substring(9,11))))return false;
-		
-		if(!controlloComune(codice.substring(11,15))) return false;
-		
-		if(!Persona.lastCharacter(copy.equalsIgnoreCase(lastChr))) return false;
+		if (!Persona.lastCharacter(copy.equalsIgnoreCase(lastChr)))
+		return false;
 
 		return true;
 	}
@@ -139,9 +115,7 @@ public class ControlloCodiceFiscale {
 			break;
 		default:
 			return false;
-
 		}
-
 
 		if ((giorno >= 1 && giorno <= maxgiorni) || (giorno >= 41 && giorno <= maxgiorni + 40)) {
 			return true;
@@ -149,18 +123,6 @@ public class ControlloCodiceFiscale {
 			System.out.println("giorno:" + giorno + " mese" + mese);
 			return false;
 		}
-
-
-		
-		if((giorno>=1 && giorno<=maxgiorni)||(giorno>=41 && giorno<=maxgiorni+40))
-			{
-			 return true;
-			}else {
-				return false;
-			}
-		
-		
-		
 
 	}
 

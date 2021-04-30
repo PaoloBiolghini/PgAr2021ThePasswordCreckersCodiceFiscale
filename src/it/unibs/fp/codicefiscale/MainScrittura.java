@@ -24,26 +24,6 @@ public class MainScrittura {
 	 * }
 	 */
 
-	public static XMLStreamWriter getDocument() throws XMLStreamException {
-
-		String filename = "Scrittura.xml";
-
-		XMLOutputFactory xmlof = null;
-		XMLStreamWriter xmlw = null;
-		try {
-			xmlof = XMLOutputFactory.newInstance();
-			xmlw = xmlof.createXMLStreamWriter(new FileOutputStream(filename), "utf-8");
-			xmlw.writeStartDocument("utf-8", "1.0");
-
-		}
-
-		catch (Exception e) {
-			System.out.println("Errore nell'inizializzazione del writer:");
-			System.out.println(e.getMessage());
-
-		}
-
-=======
 	
 	
 	
@@ -197,7 +177,7 @@ public class MainScrittura {
 			 String comune=listaPersone.get(i).getCognome();
 			 String dataNascita= listaPersone.get(i).getCompleanno();
 			 String sesso=listaPersone.get(i).getSesso();
-			 StringBuffer codiceFiscale=listaPersone.get(i).getCodiceFiscale();
+			 String codiceFiscale=listaPersone.get(i).getCodiceFiscale();
 			 		 
 		 xmlw.writeStartElement("Persona"); 
 		 xmlw.writeAttribute("id", Integer.toString(i)); 
@@ -276,7 +256,8 @@ public class MainScrittura {
 	
 	public static String controlloCodici(StringBuffer codiceFiscale)
 	{
-		String cod=(String)codiceFiscale;
+		String cod= "";
+		
 		if(!codiciCorretti.contains(codiceFiscale))
 		{
 			return "ASSENTE";
