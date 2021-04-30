@@ -154,7 +154,7 @@ public class MainScrittura {
 		}
 		
 		codiciCorretti.remove(codiceFiscale);
-		return cod;
+		return codiceFiscale;
 	}
 
 }
