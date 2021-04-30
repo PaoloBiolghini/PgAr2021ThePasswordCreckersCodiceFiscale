@@ -108,9 +108,7 @@ public class Data {
 		return formattato;
 	}
 	
-	    public int getDay() {
-        return day;
-    }
+	    
 		
 		public int getDayFemale(){
         return day+40;
