@@ -9,22 +9,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
+
 public class Comune {
 	
-	String nome ;
-	String codice ;
-	
-	public Comune(String _nome , String _codice){
-		this.nome = _nome ;
-		this.codice = _codice ;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-	public String getCodice() {
-		return codice;
-	}
 	/**
 	 * dato una Stringa (presumibilmente di un comune) restituisce vero se è presente in comuni.xml, false altrimenti
 	 * @param nome
@@ -92,4 +79,3 @@ public class Comune {
 		return codiceComune ;
 	}
 
-}
