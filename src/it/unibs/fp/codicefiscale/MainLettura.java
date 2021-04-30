@@ -66,7 +66,7 @@ public class MainLettura {
 		}
 		System.out.println(Comune.getCodiceComune("ISEO"));
 		System.out.println(Comune.codiciComuni.get(8091));
-		System.out.println(Comune.isValid(Comune.getCodiceComune("ISEO")));
+		System.out.println(Comune.isValid("E332"));
 	}
 		
 	}
