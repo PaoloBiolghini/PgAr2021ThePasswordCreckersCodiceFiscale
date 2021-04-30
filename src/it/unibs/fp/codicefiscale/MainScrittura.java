@@ -54,8 +54,8 @@ public class MainScrittura {
 		
 		
 		try { 
-			ArrayList<String> codiciCorretti=LetturaCodici.letturaCodicixml(true);
-			ArrayList<String> codiciSbagliati=LetturaCodici.letturaCodicixml(false);
+			 codiciCorretti=LetturaCodici.letturaCodicixml(true);
+			 codiciSbagliati=LetturaCodici.letturaCodicixml(false);
 			System.out.println("CODICI CORRETTI"+codiciCorretti.size());
 			System.out.println("CODICI CORRETTI"+codiciSbagliati.size());
 		 xmlw.writeStartElement("output"); 
@@ -72,7 +72,7 @@ public class MainScrittura {
 			 String dataNascita= listaPersone.get(i).getCompleanno();
 			 String sesso=listaPersone.get(i).getSesso();
 			 String codiceFiscale=listaPersone.get(i).getCodiceFiscale();
-			 System.out.println("ENTRA IN PERSONE");
+			 System.out.println("ENTRA IN PERSONE  "+nome+"  "+cognome);
 		 xmlw.writeStartElement("Persona"); 
 		 xmlw.writeAttribute("id", Integer.toString(i)); 
 		 
