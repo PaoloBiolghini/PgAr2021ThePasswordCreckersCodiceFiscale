@@ -107,9 +107,7 @@ public class MainLettura {
 
 			xmlr.next();
 		}
-		System.out.println(listaPersone.get(0).getCodicefiscale());
-		System.out.println(listaPersone.get(1).getCodicefiscale());
-		System.out.println(listaPersone.get(2).getCodicefiscale());
+		
 
 
 		Data data = Data.estraiData("1244-32-76");
