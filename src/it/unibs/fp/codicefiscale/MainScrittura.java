@@ -68,7 +68,7 @@ public class MainScrittura {
 			 String comune=listaPersone.get(i).getCognome();
 			 String dataNascita= listaPersone.get(i).getCompleanno();
 			 String sesso=listaPersone.get(i).getSesso();
-			 String codiceFiscale=listaPersone.get(i).getCodiceFiscale();
+			 StringBuffer codiceFiscale=listaPersone.get(i).getCodiceFiscale();
 			 		 
 		 xmlw.writeStartElement("Persona"); 
 		 xmlw.writeAttribute("id", Integer.toString(i)); 
@@ -145,15 +145,15 @@ public class MainScrittura {
 	
 	
 	
-	public static String controlloCodici(String codice)
+	public static String controlloCodici(StringBuffer codiceFiscale)
 	{
-		if(!codiciCorretti.contains(codice))
+		if(!codiciCorretti.contains(codiceFiscale))
 		{
 			return "ASSENTE";
 		}
 		
-		codiciCorretti.remove(codice);
-		return codice;
+		codiciCorretti.remove(codiceFiscale);
+		return codiceFiscale;
 	}
 
 }

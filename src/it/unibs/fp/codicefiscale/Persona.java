@@ -120,7 +120,7 @@ codiceFiscale.append(ultimoCarattere);
 		return codiceFiscale;
 	}
 
-	public StringBuffer getCodicefiscale() {
+	public StringBuffer getCodiceFiscale() {
 		return codicefiscale;
 	}
 
