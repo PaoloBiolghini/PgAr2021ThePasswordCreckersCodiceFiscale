@@ -68,7 +68,7 @@ public class MainScrittura {
 			 String comune=listaPersone.get(i).getCognome();
 			 String dataNascita= listaPersone.get(i).getCompleanno();
 			 String sesso=listaPersone.get(i).getSesso();
-			 StringBuffer codiceFiscale=listaPersone.get(i).getCodiceFiscale();
+			 String codiceFiscale=listaPersone.get(i).getCodiceFiscale();
 			 		 
 		 xmlw.writeStartElement("Persona"); 
 		 xmlw.writeAttribute("id", Integer.toString(i)); 

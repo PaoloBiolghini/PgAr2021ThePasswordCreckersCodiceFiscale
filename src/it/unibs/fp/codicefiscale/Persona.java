@@ -101,22 +101,22 @@ public class Persona {
 			codiceFiscale.append(nome);
 			codiceFiscale.append("X");
 		}else codiceFiscale.append(nameLetters(nome));
-//lettere anno di nascita
-codiceFiscale.append(data.getLastTwoDigitsYear());
-codiceFiscale.append(data.mese(data.getMonth()));
-//genere
+	//lettere anno di nascita
+	codiceFiscale.append(data.getLastTwoDigitsYear());
+	codiceFiscale.append(data.mese(data.getMonth()));
+	//genere
 
 		if (sesso.equalsIgnoreCase("m")) {
 			codiceFiscale.append(data.formatta(data.getDay()));
 		} else {
 			codiceFiscale.append(data.getDayFemale());
 		}
-//lettere comune
-
-codiceFiscale.append(Comune.getCodiceComune(comune));
-//carattere controllo
-
-codiceFiscale.append(lastCharacter(codiceFiscale.toString()));
+		//lettere comune
+		
+		codiceFiscale.append(Comune.getCodiceComune(comune));
+		//carattere controllo
+		
+		codiceFiscale.append(lastCharacter(codiceFiscale.toString()));
 
 		return codiceFiscale;
 	}
