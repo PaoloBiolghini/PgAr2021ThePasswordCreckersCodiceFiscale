@@ -39,7 +39,7 @@ public class ControlloCodiceFiscale {
 		
 		if(!controlloComune(codice.substring(11,15))) return false;
 		
-		if(!Persona.lastCharacter(codice.equalsIgnoreCase(lastChr))) return false;
+		if(!Persona.lastCharacter(codice).equalsIgnoreCase(lastChr)) return false;
 		return true;
 	}
 	
