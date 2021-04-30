@@ -39,6 +39,7 @@ public class Data {
 		this.month = month;
 	}
 
+
 	public void setYear(int year) {
 		this.year = year;
 	}
@@ -109,4 +110,14 @@ public class Data {
 		return formattato;
 	}
 
+	
+	    
+		
+		public int getDayFemale(){
+        return day+40;
+		}
+	
+
+
 }
+

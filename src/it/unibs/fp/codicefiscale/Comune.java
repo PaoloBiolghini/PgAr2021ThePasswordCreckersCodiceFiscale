@@ -21,18 +21,9 @@ public class Comune {
 	private String codice;
 	public static ArrayList<String> codiciComuni = Comune.leggiCodiciComuni();
 
-	public Comune(String _nome, String _codice) {
-		this.nome = _nome;
-		this.codice = _codice;
-	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public String getCodice() {
-		return codice;
-	}
+public class Comune {
+	
 
 	/**
 	 * dato un codice restituisce true se valido , false altrimenti
@@ -125,7 +116,7 @@ public class Comune {
 	}
 
 	/**
-	 * restituisce true se il comune è valido (presente nel comuni.xml) false
+	 * restituisce true se il comune Ã¨ valido (presente nel comuni.xml) false
 	 * altrimenti
 	 * 
 	 * @param comune
@@ -154,3 +145,4 @@ public class Comune {
 	 * return esiste; }
 	 */
 }
+
