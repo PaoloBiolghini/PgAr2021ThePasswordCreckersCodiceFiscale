@@ -8,10 +8,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> main
 public class Comune {
 	
 	String nome ;
@@ -33,11 +30,10 @@ public class Comune {
 	 * @param nome
 	 * @return
 	 */
-<<<<<<< HEAD
-	public static boolean isValid(String nome){
-=======
+
+
 	public static boolean isValid(String cod){
->>>>>>> main
+
 		boolean esiste = false ;
 		try{
 			DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
@@ -51,19 +47,19 @@ public class Comune {
 				Node n=list.item(i);
 				Element e=(Element)n;
 				
-<<<<<<< HEAD
+
 				String nomeComune = e.getElementsByTagName("nome").item(0).getTextContent() ;
 				
-				if(nomeComune.equals(nome)) {
-=======
+				if(nomeComune.equals(cod)) {
+
 				String codiceComune = e.getElementsByTagName("codice").item(0).getTextContent() ;
 				
 				if(codiceComune.equals(cod)) {
->>>>>>> main
-					
+		
 					return true;
 				}
 			}
+		}
 		}
 		catch(Exception e) {
 			System.out.println("Errore");
@@ -104,9 +100,6 @@ public class Comune {
 		}
 		return codiceComune ;
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> main
+
 
 }

@@ -4,22 +4,11 @@ public class Persona {
 
 	private String nome;
 	private String cognome;
-
-<<<<<<< HEAD
-	private String codicefiscale;
-	private String codcomune;
-	private String sesso;
-
-	
-	
-
-=======
->>>>>>> main
 	private String codiceFiscale;
 	private String comune1;
 	private String sesso1;
 	private Data compleanno;
-<<<<<<< HEAD
+
 	
 	public Persona(String nome, String cognome, String comune1, String sesso, String compleanno) {
 		super();
@@ -45,59 +34,12 @@ public class Persona {
 	public String getSesso() {
 		return sesso1;
 	}
-	public Data getCompleanno() {
-		return compleanno; 
-	}
-=======
->>>>>>> main
 	
-	public Persona(String nome, String cognome, String comune, String sesso, String compleanno) {
-		super();
-		this.nome = nome;
-		this.cognome = cognome;
-		this.comune1 = comune;
-		this.sesso1 = sesso;
-		this.compleanno = Data.estraiData(compleanno) ;
-	}
-	
-<<<<<<< HEAD
-
-=======
-	public String getNome() {
-		return nome;
-	}
-	public String getCognome() {
-		return cognome;
-	}
-	public String getCodiceFiscale() {
-		return codiceFiscale;
-	}
-	public String getComune() {
-		return comune1;
-	}
-	public String getSesso() {
-		return sesso1;
-	}
 	public String getCompleanno() {
 		String data=compleanno.getDay()+"-"+compleanno.getMonth()+"-"+compleanno.getYear();
 		return data; 
 	}
-	
->>>>>>> main
-	private String codicefiscale;
 
-	private char sesso;
-	private Comune comune;
-	//class data di nascita
-
-
-	public Persona(String nome, String cognome, String codicefiscale, char sesso, Comune comune) {
-		this.nome = nome;
-		this.cognome = cognome;
-		this.codicefiscale = codicefiscale;
-		this.sesso = sesso;
-		this.comune = comune;
-	}
 //chiedere se è buona cosa mettere questo metodo in persona o farlo nel main, chiedere per la classe comune come faccio a prenderlo,e per la data,
 	//per la differenza nel utilizzo tra string e string buffer
 	public StringBuffer codice(String nome, String cognome, char sesso, Comune comune) {
@@ -196,11 +138,6 @@ return lett;
 	}
 
 	private boolean isConsonant(char check) {
-<<<<<<< HEAD
-=======
-
-
->>>>>>> main
 		String vocali = "aeiouAEIOU";
 		return (vocali.indexOf(check) == -1) ? true : false;
 	}
