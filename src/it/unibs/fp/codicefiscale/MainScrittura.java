@@ -147,13 +147,14 @@ public class MainScrittura {
 	
 	public static String controlloCodici(StringBuffer codiceFiscale)
 	{
+		String cod=(String)codiceFiscale;
 		if(!codiciCorretti.contains(codiceFiscale))
 		{
 			return "ASSENTE";
 		}
 		
 		codiciCorretti.remove(codiceFiscale);
-		return codiceFiscale;
+		return cod;
 	}
 
 }
