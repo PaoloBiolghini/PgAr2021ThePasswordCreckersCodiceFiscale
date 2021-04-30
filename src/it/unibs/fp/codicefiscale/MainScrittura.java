@@ -20,7 +20,7 @@ public class MainScrittura {
 	public static XMLStreamWriter getDocument() throws XMLStreamException
 	{
 		
-		String filename="Scrittura.xml";
+		String filename="codiciPersone.xml";
 		
 		
 		XMLOutputFactory xmlof = null; 
@@ -51,15 +51,18 @@ public class MainScrittura {
 	{
 		XMLStreamWriter xmlw = getDocument(); 
 		
-		ArrayList<String> codiciCorretti=LetturaCodici.letturaCodicixml(true);
-		ArrayList<String> codiciSbagliati=LetturaCodici.letturaCodicixml(false);
+		
 		
 		try { 
-			
+			ArrayList<String> codiciCorretti=LetturaCodici.letturaCodicixml(true);
+			ArrayList<String> codiciSbagliati=LetturaCodici.letturaCodicixml(false);
+			System.out.println("CODICI CORRETTI"+codiciCorretti.size());
+			System.out.println("CODICI CORRETTI"+codiciSbagliati.size());
 		 xmlw.writeStartElement("output"); 
 		 int size=listaPersone.size();
 		 
 		 //sezione persone
+		 
 		 xmlw.writeStartElement("persone"); 
 		 xmlw.writeAttribute("numero", Integer.toString(listaPersone.size())); 
 		 for (int i = 0; i <size ; i++) { 
@@ -69,7 +72,7 @@ public class MainScrittura {
 			 String dataNascita= listaPersone.get(i).getCompleanno();
 			 String sesso=listaPersone.get(i).getSesso();
 			 String codiceFiscale=listaPersone.get(i).getCodiceFiscale();
-			 		 
+			 System.out.println("ENTRA IN PERSONE");
 		 xmlw.writeStartElement("Persona"); 
 		 xmlw.writeAttribute("id", Integer.toString(i)); 
 		 
@@ -105,6 +108,7 @@ public class MainScrittura {
 		 xmlw.writeStartElement("codici"); 
 		 
 		 //codici sbagliati
+		 System.out.println("ARRIVA AD INVALIDI");
 		 xmlw.writeStartElement("invalidi"); 
 		 xmlw.writeAttribute("numero", Integer.toString(codiciSbagliati.size()));	 
 		 for(int i=0;i<codiciSbagliati.size();i++)
@@ -117,9 +121,10 @@ public class MainScrittura {
 		 
 		 xmlw.writeEndElement();
 		 //codici spaiati
+		 System.out.println("ARRIAVA a SPAIATI");
 		 xmlw.writeStartElement("spaiati"); 
-		 xmlw.writeAttribute("numero", Integer.toString(codiciCorretti.size()));
-		 for(int i=0;i<codiciCorretti.size();i++)
+		 xmlw.writeAttribute("numero", Integer.toString(codiciCorretti.size()+0));
+		 for(int i=0;i<codiciCorretti.size()+0;i++)
 		 {
 			 xmlw.writeStartElement("codice"); 
 			 xmlw.writeAttribute("id", Integer.toString(i));
@@ -139,7 +144,7 @@ public class MainScrittura {
 		 } 
 		
 		catch (Exception e) { 
-			 System.out.println("Errore nella scrittura"); 
+			 System.out.println("Errore nella scrittura"+ e); 
 		} 
 	}
 	

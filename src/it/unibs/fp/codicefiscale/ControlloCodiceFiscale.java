@@ -14,11 +14,15 @@ public class ControlloCodiceFiscale {
 	 * @return
 	 */
 	public static boolean controllaCodice(String codice)
+	
 	{
-		char lastChr=codice.charAt(15);
-		String cod=codice.substring(0,16);
-         if(codice.length()!=16) return false;
 		
+		
+         if(codice.length()!=16) return false;
+         
+         char lastChr=codice.charAt(15);
+         String cod=codice.substring(0,15);
+         
 		if(!controlloLettere(codice.substring(0,3))) return false;
 		
 		if(!controlloLettere(codice.substring(3,6))) return false;
@@ -40,6 +44,7 @@ public class ControlloCodiceFiscale {
 		if(!controlloComune(codice.substring(11,15))) return false;
 		
 		if(Persona.lastCharacter(cod)!=lastChr) return false;
+		
 		return true;
 	}
 	

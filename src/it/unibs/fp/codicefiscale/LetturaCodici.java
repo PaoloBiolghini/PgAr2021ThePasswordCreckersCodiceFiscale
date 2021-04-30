@@ -16,8 +16,9 @@ public class LetturaCodici {
 	
 	public static void main(String[] args) throws XMLStreamException {
 		
-		System.out.println(letturaCodicixml(true).size());
-		System.out.println(letturaCodicixml(false).size());
+		//System.out.println(letturaCodicixml(true).size());
+		
+		//System.out.println(letturaCodicixml(false));
 	}
 	
 	public static XMLStreamReader creazioneReader()
@@ -50,7 +51,7 @@ public class LetturaCodici {
 		{
 			System.out.println("entra nel calcolo");
 			XMLStreamReader xmlr=creazioneReader();
-			ArrayList<String> codiciCercati=new ArrayList();
+			
 			String cod=null;
 			
 			try {
@@ -90,7 +91,9 @@ public class LetturaCodici {
 			
 		
 		if(type)
-		return codiciCorretti;
+		{
+			return codiciCorretti;
+		}
 		
 		return codiciSbagliati;
 		
