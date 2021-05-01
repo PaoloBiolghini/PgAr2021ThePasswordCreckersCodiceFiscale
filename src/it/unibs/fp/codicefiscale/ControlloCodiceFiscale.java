@@ -132,7 +132,6 @@ public class ControlloCodiceFiscale {
 	 */
 	public static boolean controlloComune(String codice) {
 		
-		
 		return Comune.isValid(codice);
 		
 	}

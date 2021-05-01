@@ -14,7 +14,6 @@ public class Persona {
 	private String nome;
 	private String cognome;
 	private String codicefiscale;
-
 	private String sesso;
 	private String comune;
 	private Data data;
@@ -107,13 +106,13 @@ public class Persona {
 	//genere
 
 		if (sesso.equalsIgnoreCase("m")) {
-			codiceFiscale.append(data.formatta(data.getDay()));
+			codiceFiscale.append(Data.formatta(data.getDay()));
 		} else {
 			codiceFiscale.append(data.getDayFemale());
 		}
 		//lettere comune
-		System.out.println("----------"+Comune.getCodiceComune(comune.trim()));
-		codiceFiscale.append(Comune.getCodiceComune(comune.trim()));
+		System.out.println("----------"+Comune.getCodiceComune(comune));
+		codiceFiscale.append(Comune.getCodiceComune(comune));
 		//carattere controllo
 		
 		codiceFiscale.append(lastCharacter(codiceFiscale.toString()));
